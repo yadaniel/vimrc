@@ -323,6 +323,10 @@ set noautochdir
 " at the top of the source tree
 set tags=./tags,tags;
 
+# create tags file
+nmap _t : !ctags -R & <cr> redraw!
+nmap _tt : !ctags -R --languages=
+
 " search files recursive
 set path+=**
 
