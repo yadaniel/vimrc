@@ -78,6 +78,7 @@ set noundofile      " undo operations work until vim is closed, this is default
 
 set encoding=utf8
 set hlsearch
+set incsearch
 set nomodifiable    "default readonly
 set smartcase
 set ignorecase      "case insensitive search
@@ -175,6 +176,9 @@ endfunction
 
 map <PageDown> :set scroll=0<CR>:set scroll^=2<CR>:set scroll-=1<CR><C-D>:set scroll=0<CR>
 map <PageUp> :set scroll=0<CR>:set scroll^=2<CR>:set scroll-=1<CR><C-U>:set scroll=0<CR>
+
+highlight Search ctermbg=lightgreen ctermfg=DarkRed term=underline,bold
+highlight IncSearch ctermbg=lightgreen ctermfg=DarkRed term=underline
 
 "highlight normal ctermbg=blue
 "highlight CursorLine ctermbg=Blue ctermfg=Yellow
