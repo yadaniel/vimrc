@@ -424,5 +424,18 @@ nmap  _g :LustyBufferGrep<cr>
 
 nmap _f :CtrlP<cr>
 
+" dont jump to the next matching word, stay on the current word
+nnoremap <silent> * :let @/= '\<' . expand('<cword>') . '\>' <bar> set hls <cr>
 
+" normal mode jumps 
+" jump to line <n>G
+" jump to begin/end of the sentence ()
+" jump to next blank line up/down {}
+" jump to begin/end of section [[]]
+" jump to begin/end of block [{]}
+" jump to L low, M middle, H high
+" jump to matching delimiter %
+" jump to tag :<tag>
+" jump to older tag Ctrl-t
+" jump to tag definiion C-]
 
