@@ -113,6 +113,7 @@ nmap + :set modifiable<enter>
 nmap - :set nomodifiable<enter>
 nmap _e :echo "okay"
 nmap _v :version<enter>
+nmap _w :wincmd o<enter>
 
 " c-like line comments
 nmap _c  ^i//<ESC>j     " comment out from line column 0
