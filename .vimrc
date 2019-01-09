@@ -428,6 +428,11 @@ nmap _f :CtrlP<cr>
 " dont jump to the next matching word, stay on the current word
 nnoremap <silent> * :let @/= '\<' . expand('<cword>') . '\>' <bar> set hls <cr>
 
+" space show trailing whitespaces
+nmap _ss :/\s\+$<enter>
+" space delete trailing whitespaces
+nmap _sd :%s/\s\+$//e<enter>
+
 " normal mode jumps 
 " jump to line <n>G
 " jump to begin/end of the sentence ()
