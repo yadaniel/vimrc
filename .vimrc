@@ -109,8 +109,8 @@ set autoread                            "reread file when file changed externall
 autocmd CursorHold,CursorHoldI * checktime   "call autoread
 
 nmap _n :nohlsearch<enter>
-nmap + :set modifiable<enter>
-nmap - :set nomodifiable<enter>
+nmap + :set modifiable<enter>       "works when keyboard numpad is enabled
+nmap - :set nomodifiable<enter>     "works when keyboard numpad is enabled
 nmap _e :echo "okay"
 nmap _v :version<enter>
 nmap _w :wincmd o<enter>
