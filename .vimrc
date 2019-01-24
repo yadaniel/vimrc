@@ -109,6 +109,7 @@ set autoread                            "reread file when file changed externall
 autocmd CursorHold,CursorHoldI * checktime   "call autoread
 
 nmap _n :nohlsearch<enter>
+nmap _m :set modifiable<enter>
 nmap + :set modifiable<enter>       "works when keyboard numpad is enabled
 nmap - :set nomodifiable<enter>     "works when keyboard numpad is enabled
 nmap _e :echo "okay"
@@ -444,4 +445,7 @@ nmap _sd :%s/\s\+$//e<enter>
 " jump to tag :<tag>
 " jump to older tag Ctrl-t
 " jump to tag definiion C-]
+
+set list
+set listchars=tab:>-
 
