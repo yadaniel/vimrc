@@ -36,6 +36,7 @@ Plugin 'https://github.com/majutsushi/tagbar'
 Plugin 'https://github.com/kien/ctrlp.vim.git'
 Plugin 'https://github.com/vim-scripts/LustyExplorer.git'
 Plugin 'https://github.com/mileszs/ack.vim.git'
+Plugin 'https://github.com/tomtom/tcomment_vim'
 
 "Plugin 'Shougo/deoplete.nvim'
 "Plugin 'roxma/nvim-yarp'
@@ -448,4 +449,8 @@ nmap _sd :%s/\s\+$//e<enter>
 
 set list
 set listchars=tab:>-
+
+" comment shortcuts
+nmap cc gcc
+nmap cx gcip
 
