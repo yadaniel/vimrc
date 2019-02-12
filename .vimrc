@@ -37,6 +37,7 @@ Plugin 'https://github.com/kien/ctrlp.vim.git'
 Plugin 'https://github.com/vim-scripts/LustyExplorer.git'
 Plugin 'https://github.com/mileszs/ack.vim.git'
 Plugin 'https://github.com/tomtom/tcomment_vim'
+Plugin 'https://github.com/ericcurtin/CurtineIncSw.vim.git'
 
 "Plugin 'Shougo/deoplete.nvim'
 "Plugin 'roxma/nvim-yarp'
@@ -88,7 +89,7 @@ set cursorcolumn    " cursorcolumn
 set expandtab       "expand tabs with spaces
 set tabstop=4
 set shiftwidth=4
-set textwidth=120
+set textwidth=1000
 set scrolloff=3     "start scrolling when cursor is 3 lines away from top or bottom
 set relativenumber  "show number lines relative
 set number          "show current line number
@@ -453,4 +454,7 @@ set listchars=tab:>-
 " comment shortcuts
 nmap cc gcc
 nmap cx gcip
+
+" jump between h and c
+map <F5> :call CurtineIncSw()<CR>
 
