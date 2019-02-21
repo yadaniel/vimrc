@@ -344,7 +344,7 @@ set foldlevel=99
 nnoremap gf :vertical wincmd f<CR>
 
 " nerdtree key mapping
-nmap <space> :NERDTreeToggle<CR>
+nmap <space><space> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 let NERDTreeShowLineNumbers=1
 autocmd FileType nerdtree setlocal relativenumber
@@ -360,7 +360,6 @@ nmap <c-up> :split<CR>
 nmap <c-left> :close<CR>
 nmap <c-down> :close<CR>
 nmap <c-right> :vsplit<CR>
-
 
 " open all buffers in tabs
 nmap <f2> :tab sball<CR>
@@ -460,5 +459,6 @@ map <F5> :call CurtineIncSw()<CR>
 
 nmap <F6> "xyiw
 nmap <F7> :tag <C-R>x<CR>
-nmap <F8> "xyiw :tag <C-R>x<CR>
+" nmap <F8> "xyiw :tag <C-R>x<CR>
+nmap <F8> "xyiw :tabnew <bar> :tag <C-R>x<CR>
 
