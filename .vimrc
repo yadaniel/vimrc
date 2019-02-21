@@ -81,7 +81,7 @@ set noundofile      " undo operations work until vim is closed, this is default
 set encoding=utf8
 set hlsearch
 set incsearch
-set nomodifiable    "default readonly
+" set nomodifiable    "default readonly
 set smartcase
 set ignorecase      "case insensitive search
 set cursorline      "cursorline
@@ -457,4 +457,8 @@ nmap cx gcip
 
 " jump between h and c
 map <F5> :call CurtineIncSw()<CR>
+
+nmap <F6> "xyiw
+nmap <F7> :tag <C-R>x<CR>
+nmap <F8> "xyiw :tag <C-R>x<CR>
 
