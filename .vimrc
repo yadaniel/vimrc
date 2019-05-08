@@ -38,6 +38,12 @@ Plugin 'https://github.com/vim-scripts/LustyExplorer.git'
 Plugin 'https://github.com/mileszs/ack.vim.git'
 Plugin 'https://github.com/tomtom/tcomment_vim'
 Plugin 'https://github.com/ericcurtin/CurtineIncSw.vim.git'
+" Plugin 'https://github.com/Valloric/YouCompleteMe'
+Plugin 'https://github.com/ajh17/VimCompletesMe'
+
+Plugin 'https://github.com/Shougo/deoplete.nvim'
+Plugin 'https://github.com/roxma/nvim-yarp'
+Plugin 'https://github.com/roxma/vim-hug-neovim-rpc'
 
 "Plugin 'Shougo/deoplete.nvim'
 "Plugin 'roxma/nvim-yarp'
@@ -50,6 +56,10 @@ Plugin 'https://github.com/ericcurtin/CurtineIncSw.vim.git'
 "Plugin 'fatih/vim-go'
 
 call vundle#end()
+
+" Use deoplete.
+let g:deoplete#enable_at_startup = 0
+set pyxversion=3
 
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
@@ -461,4 +471,7 @@ nmap <F6> "xyiw
 nmap <F7> :tag <C-R>x<CR>
 " nmap <F8> "xyiw :tag <C-R>x<CR>
 nmap <F8> "xyiw :tabnew <bar> :tag <C-R>x<CR>
+
+" do not start ycm server at startup
+let g:loaded_youcompleteme = 1
 
