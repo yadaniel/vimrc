@@ -38,12 +38,13 @@ Plugin 'https://github.com/vim-scripts/LustyExplorer.git'
 Plugin 'https://github.com/mileszs/ack.vim.git'
 Plugin 'https://github.com/tomtom/tcomment_vim'
 Plugin 'https://github.com/ericcurtin/CurtineIncSw.vim.git'
-" Plugin 'https://github.com/Valloric/YouCompleteMe'
-Plugin 'https://github.com/ajh17/VimCompletesMe'
 
+" Plugin 'https://github.com/Valloric/YouCompleteMe'
 Plugin 'https://github.com/Shougo/deoplete.nvim'
 Plugin 'https://github.com/roxma/nvim-yarp'
 Plugin 'https://github.com/roxma/vim-hug-neovim-rpc'
+"
+Plugin 'https://github.com/ajh17/VimCompletesMe'
 
 "Plugin 'Shougo/deoplete.nvim'
 "Plugin 'roxma/nvim-yarp'
@@ -73,6 +74,9 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
+
+" uses tags file
+set omnifunc=syntaxcomplete#Complete
 
 set mouse=a
 set ruler
@@ -380,7 +384,9 @@ set tabpagemax=100
 " nmap <end> :
 " see :help key-notion
 
-nmap <tab> : TagbarToggle <cr>
+" nmap <tab> : TagbarToggle <cr>
+" <tab> used as CNTL-i for jumplist
+nmap <tab>q : TagbarToggle <cr>
 "nmap <pageup> : wincmd l <cr>
 "nmap <pagedown> : wincmd h <cr>
 nmap <s-up> : wincmd k <cr>
@@ -472,6 +478,5 @@ nmap <F7> :tag <C-R>x<CR>
 " nmap <F8> "xyiw :tag <C-R>x<CR>
 nmap <F8> "xyiw :tabnew <bar> :tag <C-R>x<CR>
 
-" do not start ycm server at startup
-let g:loaded_youcompleteme = 1
+let g:loaded_youcompleteme = 0
 
