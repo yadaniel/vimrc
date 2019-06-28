@@ -38,13 +38,12 @@ Plugin 'https://github.com/vim-scripts/LustyExplorer.git'
 Plugin 'https://github.com/mileszs/ack.vim.git'
 Plugin 'https://github.com/tomtom/tcomment_vim'
 Plugin 'https://github.com/ericcurtin/CurtineIncSw.vim.git'
-
 " Plugin 'https://github.com/Valloric/YouCompleteMe'
+Plugin 'https://github.com/ajh17/VimCompletesMe'
+
 Plugin 'https://github.com/Shougo/deoplete.nvim'
 Plugin 'https://github.com/roxma/nvim-yarp'
 Plugin 'https://github.com/roxma/vim-hug-neovim-rpc'
-"
-Plugin 'https://github.com/ajh17/VimCompletesMe'
 
 "Plugin 'Shougo/deoplete.nvim'
 "Plugin 'roxma/nvim-yarp'
@@ -131,6 +130,8 @@ nmap - :set nomodifiable<enter>     "works when keyboard numpad is enabled
 nmap _e :echo "okay"
 nmap _v :version<enter>
 nmap _w :wincmd o<enter>
+nmap __ :bnext <enter>
+nmap _# :bNext <enter>
 
 " c-like line comments
 nmap _c  ^i//<ESC>j     " comment out from line column 0
@@ -384,8 +385,8 @@ set tabpagemax=100
 " nmap <end> :
 " see :help key-notion
 
-" nmap <tab> : TagbarToggle <cr>
 " <tab> used as CNTL-i for jumplist
+" nmap <tab> : TagbarToggle <cr>
 nmap <tab>q : TagbarToggle <cr>
 "nmap <pageup> : wincmd l <cr>
 "nmap <pagedown> : wincmd h <cr>
@@ -478,5 +479,13 @@ nmap <F7> :tag <C-R>x<CR>
 " nmap <F8> "xyiw :tag <C-R>x<CR>
 nmap <F8> "xyiw :tabnew <bar> :tag <C-R>x<CR>
 
-let g:loaded_youcompleteme = 0
+" do not start ycm server at startup
+let g:loaded_youcompleteme = 1
+let g:LustyExplorerSuppressRubyWarning = 1
+
+if &term =~ '256color'
+  " disable Background Color Erase (BCE)
+     set t_ut=
+    set background=dark
+endif
 
