@@ -152,6 +152,7 @@ autocmd BufWritePost *.go : call Gofmt()
 autocmd BufWritePost *.rs : call Rustfmt()
 autocmd BufWritePost *.cs : call Cppfmt()
 autocmd BufWritePost *.c : call Cppfmt()
+autocmd BufWritePost *.h : call Cppfmt()
 autocmd BufWritePost *.cpp : call Cppfmt()
 
 function Gofmt()
@@ -162,8 +163,12 @@ function Gofmt()
     normal zR
 endfunction
 
+" after command
+" rustup component add rustfmt-preview
+" adjustment was needed
 function Rustfmt()
-    :silent exec "!rustfmt.exe --force --write-mode=overwrite '%'"
+    " :silent exec "!rustfmt.exe --force --write-mode=overwrite '%'"
+    :silent exec "!rustfmt.exe '%'"
     :edit
     :redraw!
 endfunction
