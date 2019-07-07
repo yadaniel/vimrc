@@ -163,9 +163,10 @@ function Gofmt()
     normal zR
 endfunction
 
-" after command
+" adjustment after command
 " rustup component add rustfmt-preview
-" adjustment was needed
+" next adjustment after update to stable 1.36
+" mv /cygdrive/c/Users/Dell/.cargo/bin/rustfmt /cygdrive/c/Users/Dell/.cargo/bin/rustfmt_
 function Rustfmt()
     " :silent exec "!rustfmt.exe --force --write-mode=overwrite '%'"
     " :silent exec "!rustfmt.exe '%'"
