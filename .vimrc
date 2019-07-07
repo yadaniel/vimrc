@@ -168,7 +168,8 @@ endfunction
 " adjustment was needed
 function Rustfmt()
     " :silent exec "!rustfmt.exe --force --write-mode=overwrite '%'"
-    :silent exec "!rustfmt.exe '%'"
+    " :silent exec "!rustfmt.exe '%'"
+    :silent exec "!cargo.exe fmt '%'"
     :edit
     :redraw!
 endfunction
