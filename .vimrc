@@ -117,6 +117,7 @@ autocmd BufRead,BufNewFile *.scala set syntax=scala
 autocmd BufRead,BufNewFile *.go set filetype=go
 autocmd BufRead,BufNewFile *.go set syntax=go
 autocmd BufRead *.go normal zR
+autocmd BufReadPost,BufNewFile *.txt,*.tex setlocal textwidth=80
 colorscheme Monokai
 set clipboard=unnamed
 set nowrap
@@ -132,6 +133,16 @@ nmap _v :version<enter>
 nmap _w :wincmd o<enter>
 nmap __ :bnext <enter>
 nmap _# :bNext <enter>
+nmap _r :call BuildRun()<enter>
+
+function BuildRun()
+    let extension=expand('%:e')
+    if extension == "rs"
+        :!cargo run
+    elseif extension == "c"
+        :!gcc -c -Wall "%" && echo "compiled"
+    endif
+endfunction
 
 " c-like line comments
 nmap _c  ^i//<ESC>j     " comment out from line column 0
@@ -169,8 +180,8 @@ endfunction
 " mv /cygdrive/c/Users/Dell/.cargo/bin/rustfmt /cygdrive/c/Users/Dell/.cargo/bin/rustfmt_
 function Rustfmt()
     " :silent exec "!rustfmt.exe --force --write-mode=overwrite '%'"
-    " :silent exec "!rustfmt.exe '%'"
-    :silent exec "!cargo.exe fmt '%'"
+    :silent exec "!rustfmt.exe '%'"
+    " :silent exec "!cargo.exe fmt '%'"
     :edit
     :redraw!
 endfunction
@@ -404,31 +415,31 @@ nmap <s-right> : wincmd l <cr>
 
 "'i:imports:1'  does not show imports by default, only when cursor is at import line
 let g:tagbar_type_go = {
-	\ 'ctagstype' : 'go',
-	\ 'kinds'     : [
-		\ 'p:package',
-		\ 'i:imports',
-		\ 'c:constants',
-		\ 'v:variables',
-		\ 't:types',
-		\ 'n:interfaces',
-		\ 'w:fields',
-		\ 'e:embedded',
-		\ 'm:methods',
-		\ 'r:constructor',
-		\ 'f:functions'
-	\ ],
-	\ 'sro' : '.',
-	\ 'kind2scope' : {
-		\ 't' : 'ctype',
-		\ 'n' : 'ntype'
-	\ },
-	\ 'scope2kind' : {
-		\ 'ctype' : 't',
-		\ 'ntype' : 'n'
-	\ },
-	\ 'ctagsbin'  : 'gotags.exe',
-	\ 'ctagsargs' : '-sort -silent'
+    \ 'ctagstype' : 'go',
+    \ 'kinds'     : [
+        \ 'p:package',
+        \ 'i:imports',
+        \ 'c:constants',
+        \ 'v:variables',
+        \ 't:types',
+        \ 'n:interfaces',
+        \ 'w:fields',
+        \ 'e:embedded',
+        \ 'm:methods',
+        \ 'r:constructor',
+        \ 'f:functions'
+    \ ],
+    \ 'sro' : '.',
+    \ 'kind2scope' : {
+        \ 't' : 'ctype',
+        \ 'n' : 'ntype'
+    \ },
+    \ 'scope2kind' : {
+        \ 'ctype' : 't',
+        \ 'ntype' : 'n'
+    \ },
+    \ 'ctagsbin'  : 'gotags.exe',
+    \ 'ctagsargs' : '-sort -silent'
 \ }
 
 " snippets for golang
