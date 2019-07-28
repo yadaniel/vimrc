@@ -488,6 +488,9 @@ set listchars=tab:>-
 " comment shortcuts
 nmap cc gcc
 nmap cx gcip
+" tcomment uses commentstring which depends on filetype
+autocmd BufNewFile,BufRead *.toml set filetype=toml
+autocmd FileType toml set commentstring=#\ %s
 
 " jump between h and c
 map <F5> :call CurtineIncSw()<CR>
