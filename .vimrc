@@ -44,6 +44,7 @@ Plugin 'https://github.com/ajh17/VimCompletesMe'
 Plugin 'https://github.com/Shougo/deoplete.nvim'
 Plugin 'https://github.com/roxma/nvim-yarp'
 Plugin 'https://github.com/roxma/vim-hug-neovim-rpc'
+Plugin 'https://github.com/tpope/vim-surround'
 
 "Plugin 'Shougo/deoplete.nvim'
 "Plugin 'roxma/nvim-yarp'
@@ -509,4 +510,11 @@ if &term =~ '256color'
      set t_ut=
     set background=dark
 endif
+
+" using surround plugin
+nmap qW ysW"
+nmap qiW ysiW"
+nmap qr ds"
+
+
 
