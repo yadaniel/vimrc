@@ -462,6 +462,11 @@ nmap  _g :LustyBufferGrep<cr>
 "nmap   :LustyJugglePrevious
 
 nmap _f :CtrlP<cr>
+let g:ctrlp_max_files=0
+let g:ctrlp_max_depth=40
+" search only in vim current directory
+let g:ctrlp_working_path_mode=''
+
 
 " dont jump to the next matching word, stay on the current word
 nnoremap <silent> * :let @/= '\<' . expand('<cword>') . '\>' <bar> set hls <cr>
