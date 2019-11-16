@@ -521,5 +521,7 @@ nmap qW ysW"
 nmap qiW ysiW"
 nmap qr ds"
 
-
+" show full file path of the opened file
+" note: pwd prints directory path of vim, which can be changed with cd inside vim
+nnoremap _p :echo expand('%:p')<CR>
 
