@@ -188,7 +188,8 @@ function Rustfmt()
 endfunction
 
 function Cppfmt()
-    :silent exec "!astyle --style=java '%'"
+    " :silent exec "!astyle --style=java '%'"
+    :silent exec "!astyle --suffix=none --style=java '%'"
     :edit
     :redraw!
 endfunction
