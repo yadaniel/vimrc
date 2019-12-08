@@ -46,6 +46,8 @@ Plugin 'https://github.com/roxma/nvim-yarp'
 Plugin 'https://github.com/roxma/vim-hug-neovim-rpc'
 Plugin 'https://github.com/tpope/vim-surround'
 
+Plugin 'https://github.com/toyamarinyon/vim-swift.git'
+
 "Plugin 'Shougo/deoplete.nvim'
 "Plugin 'roxma/nvim-yarp'
 "Plugin 'roxma/vim-hug-neovim-rpc'
