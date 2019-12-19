@@ -46,9 +46,16 @@ Plugin 'https://github.com/roxma/nvim-yarp'
 Plugin 'https://github.com/roxma/vim-hug-neovim-rpc'
 Plugin 'https://github.com/tpope/vim-surround'
 
+" swift plugins
 " Plugin 'https://github.com/toyamarinyon/vim-swift.git'
-" Plugin 'https://github.com/kballard/vim-swift.git'
-Plugin 'https://github.com/keith/swift.vim.git'
+Plugin 'https://github.com/kballard/vim-swift.git'
+" Plugin 'https://github.com/keith/swift.vim.git'
+
+" kotlin plugins
+Plugin 'https://github.com/udalov/kotlin-vim.git'
+
+" rust plugins
+Plugin 'https://github.com/rust-lang/rust.vim.git'
 
 "Plugin 'Shougo/deoplete.nvim'
 "Plugin 'roxma/nvim-yarp'
@@ -529,4 +536,43 @@ nmap qr ds"
 " show full file path of the opened file
 " note: pwd prints directory path of vim, which can be changed with cd inside vim
 nnoremap _p :echo expand('%:p')<CR>
+
+"
+" Support for Tagbar -- https://github.com/majutsushi/tagbar
+"
+if !exists(':Tagbar') || rust#tags#IsUCtags()
+    finish
+endif
+
+" vint: -ProhibitAbbreviationOption
+let s:save_cpo = &cpo
+set cpo&vim
+" vint: +ProhibitAbbreviationOption
+
+if !exists('g:tagbar_type_rust')
+    let g:tagbar_type_rust = {
+                \ 'ctagstype' : 'rust',
+                \ 'kinds' : [
+                \'T:types',
+                \'f:functions',
+                \'g:enumerations',
+                \'s:structures',
+                \'m:modules',
+                \'c:constants',
+                \'t:traits',
+                \'i:trait implementations',
+                \ ]
+                \ }
+endif
+
+" In case you've updated/customized your ~/.ctags and prefer to use it.
+if !get(g:, 'rust_use_custom_ctags_defs', 0)
+    let g:tagbar_type_rust.deffile = expand('<sfile>:p:h:h:h') . '/ctags/rust.ctags'
+endif
+
+" vint: -ProhibitAbbreviationOption
+let &cpo = s:save_cpo
+unlet s:save_cpo
+" vint: +ProhibitAbbreviationOption
+
 
