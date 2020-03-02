@@ -1,5 +1,6 @@
 --ignore-dir=.git
 --ignore-dir=public/assets
+--ignore-dir=doxygen
 --ignore-file=is:tags
 --ignore-file=ext:exe
 --ignore-file=ext:dll
@@ -23,6 +24,18 @@
 --ignore-file=ext:uvproj
 --ignore-file=ext:vcxproj
 --ignore-file=ext:sct
+--ignore-file=ext:html
+--ignore-file=ext:lst
+--ignore-file=ext:tex
+--ignore-file=ext:orig
+--ignore-file=ext:as
+--ignore-file=ext:p1
+--ignore-file=ext:pre
+--ignore-file=ext:cmf
+--ignore-file=ext:sdb
+--ignore-file=ext:sym
+--ignore-file=ext:info
+--ignore-file=ext:xml
 --color
 --follow
 --group
