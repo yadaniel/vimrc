@@ -67,6 +67,8 @@ Plugin 'https://github.com/rust-lang/rust.vim.git'
 "Plugin 'nsf/gocode', {'rtp': 'vim/'}
 "Plugin 'fatih/vim-go'
 
+Plugin 'https://github.com/ziglang/zig.vim'
+
 call vundle#end()
 
 " Use deoplete.
@@ -146,6 +148,18 @@ nmap _w :wincmd o<enter>
 nmap __ :bnext <enter>
 nmap _# :bNext <enter>
 nmap _r :call BuildRun()<enter>
+tnoremap <s-right> <C-\><C-n><C-w>h
+tnoremap <s-down> <C-\><C-n><C-w>j
+tnoremap <s-up> <C-\><C-n><C-w>k
+tnoremap <s-left> <C-\><C-n><C-w>l
+" nmap <s-up> : wincmd k <cr>
+" nmap <s-down> : wincmd j <cr>
+" nmap <s-left> : wincmd h <cr>
+" nmap <s-right> : wincmd l <cr>
+" tnoremap <s-up> : wincmd k <cr>
+" tnoremap <s-down> : wincmd j <cr>
+" tnoremap <s-left> : wincmd h <cr>
+" tnoremap <s-right> : wincmd l <cr>
 
 function BuildRun()
     let extension=expand('%:e')
