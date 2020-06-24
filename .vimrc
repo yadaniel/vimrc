@@ -120,6 +120,17 @@ set relativenumber  "show number lines relative
 set number          "show current line number
 set showcmd         "show command while entering
 set wildmenu        "show menu line below
+
+" set termwinsize=35x0  " 35 lines with unlimited line length
+" set termwinkey=_w     " key instead of <C-W>
+" tnoremap <Esc> <C-W>N " do not uncomment this line ... history lookup in bash does not work
+" set notimeout ttimeout timeoutlen=100 " TODO: check this command
+nmap _b :terminal<CR><C-W>W:quit<CR>
+tmap <a-up>    <C-W>N:tabnew<CR>
+tmap <a-down>  <C-W>N:tabclose<CR>
+tmap <a-right> <C-W>N:tabnext<CR>
+tmap <a-left>  <C-W>N:tabNext<CR>
+
 autocmd BufRead,BufNewFile *.fs set filetype=fsharp
 autocmd BufRead,BufNewFile *.fs set syntax=fsharp 
 autocmd BufRead,BufNewFile *.kt set filetype=kotlin
@@ -401,6 +412,7 @@ silent! nmap <a-down> :tabclose<CR>
 silent! nmap <a-right> :tabnext<CR>
 silent! nmap <a-left> :tabNext<CR>
 
+
 " window key mapping // shift-up,down,left,right
 nmap <c-up> :split<CR>
 nmap <c-left> :close<CR>
@@ -574,5 +586,7 @@ endif
 let &cpo = s:save_cpo
 unlet s:save_cpo
 " vint: +ProhibitAbbreviationOption
+
+
 
 
