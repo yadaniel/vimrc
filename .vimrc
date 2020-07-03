@@ -52,7 +52,7 @@ Plugin 'https://github.com/kballard/vim-swift.git'
 " Plugin 'https://github.com/keith/swift.vim.git'
 
 " kotlin plugins
-Plugin 'https://github.com/udalov/kotlin-vim.git'
+" Plugin 'https://github.com/udalov/kotlin-vim.git'
 
 " rust plugins
 Plugin 'https://github.com/rust-lang/rust.vim.git'
@@ -67,7 +67,7 @@ Plugin 'https://github.com/rust-lang/rust.vim.git'
 "Plugin 'nsf/gocode', {'rtp': 'vim/'}
 "Plugin 'fatih/vim-go'
 
-Plugin 'https://github.com/ziglang/zig.vim'
+" Plugin 'https://github.com/ziglang/zig.vim'
 
 call vundle#end()
 
@@ -601,6 +601,13 @@ let &cpo = s:save_cpo
 unlet s:save_cpo
 " vint: +ProhibitAbbreviationOption
 
+fun! TrimWhitespace()
+    let l:save = winsaveview()
+    keeppatterns %s/\s\+$//e
+    call winrestview(l:save)
+endfun
 
-
+" :call TrimWhiteSpace()
+" or create command
+command! TrimWhitespace call TrimWhitespace()
 
