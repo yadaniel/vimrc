@@ -384,6 +384,17 @@ vim.current.buffer[row-1] = new_line
 EOF
 endfunction
 
+function Asm()
+    " vimgrep "^[^;]*:" % | cw 10
+    vimgrep "^[^;]*:" % | cw
+endfunction
+
+function ASM()
+    match Search '^[^;]*:'
+endfunction
+
+nmap _a /^[^;]*:<CR>
+
 "set virtualedit=all     " allows to move cursor in any space
 
 " this option will change vim current working directory (pwd)
@@ -610,4 +621,7 @@ endfun
 " :call TrimWhiteSpace()
 " or create command
 command! TrimWhitespace call TrimWhitespace()
+
+
+
 
