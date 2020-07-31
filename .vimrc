@@ -622,6 +622,12 @@ endfun
 " or create command
 command! TrimWhitespace call TrimWhitespace()
 
+fun Count()
+    :%s///ng
+endfun
+command! Count call Count()
+nmap _z :call Count()<CR>
+
 
 
 
