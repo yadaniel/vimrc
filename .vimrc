@@ -134,7 +134,7 @@ tmap <a-right> <C-W>N:tabnext<CR>
 tmap <a-left>  <C-W>N:tabNext<CR>
 
 autocmd BufRead,BufNewFile *.fs set filetype=fsharp
-autocmd BufRead,BufNewFile *.fs set syntax=fsharp 
+autocmd BufRead,BufNewFile *.fs set syntax=fsharp
 autocmd BufRead,BufNewFile *.kt set filetype=kotlin
 autocmd BufRead,BufNewFile *.kt set syntax=kotlin
 autocmd BufRead,BufNewFile *.sc set filetype=scala
@@ -225,9 +225,17 @@ endfunction
 
 function Cppfmt()
     " :silent exec "!astyle --style=java '%'"
-    :silent exec "!astyle --suffix=none --style=java '%'"
-    :edit
-    :redraw!
+    " :silent exec "!astyle --suffix=none --style=java '%'"
+    " :silent exec "!astyle --suffix=none --style=ansi '%'"
+    " :silent exec "!astyle --suffix=none --style=stroustrup '%'"
+    " :edit
+    " :redraw!
+endfunction
+
+function Tws()
+    let l:save = winsaveview()
+    keeppatterns %s/\s\+$//e
+    call winrestview(l:save)
 endfunction
 
 "function! ProcessFileChangedShell()
@@ -275,7 +283,7 @@ highlight CursorLine ctermbg=75 ctermfg=white
 "highlight CursorLine ctermbg=LightBlue
 "highlight CursorLine ctermbg=DarkBlue
 
-""""" using python 
+""""" using python
 
 function PyExample()
     pyfile ~/.vim.py
@@ -525,7 +533,7 @@ nmap _ss :/\s\+$<enter>
 " space delete trailing whitespaces
 nmap _sd :%s/\s\+$//e<enter>
 
-" normal mode jumps 
+" normal mode jumps
 " jump to line <n>G
 " jump to begin/end of the sentence ()
 " jump to next blank line up/down {}
