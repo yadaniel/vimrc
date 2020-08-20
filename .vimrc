@@ -133,6 +133,8 @@ tmap <a-down>  <C-W>N:tabclose<CR>
 tmap <a-right> <C-W>N:tabnext<CR>
 tmap <a-left>  <C-W>N:tabNext<CR>
 
+" autocmd BufRead,BufNewFile *.a51 set filetype=masm
+autocmd BufRead,BufNewFile *.a51 set filetype=asm8051
 autocmd BufRead,BufNewFile *.fs set filetype=fsharp
 autocmd BufRead,BufNewFile *.fs set syntax=fsharp
 autocmd BufRead,BufNewFile *.kt set filetype=kotlin
@@ -554,6 +556,8 @@ nmap cx gcip
 " tcomment uses commentstring which depends on filetype
 autocmd BufNewFile,BufRead *.toml set filetype=toml
 autocmd FileType toml set commentstring=#\ %s
+autocmd FileType asm8051 set commentstring=;;\ %s
+autocmd FileType masm set commentstring=;;\ %s
 
 " jump between h and c
 map <F5> :call CurtineIncSw()<CR>
