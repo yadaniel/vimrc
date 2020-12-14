@@ -91,6 +91,7 @@ filetype plugin indent on    " required
 " uses tags file
 set omnifunc=syntaxcomplete#Complete
 
+set belloff=all
 set mouse=a
 set ruler
 syntax on
@@ -109,8 +110,8 @@ set encoding=utf8
 set hlsearch
 set incsearch
 " set nomodifiable    "default readonly
-set smartcase
-set ignorecase      "case insensitive search
+" set smartcase       " lowercase pattern will select both, uppercase pattern will select only uppercase
+set ignorecase      "case insensitive search, uppercase will select both
 set cursorline      "cursorline
 set cursorcolumn    " cursorcolumn
 set expandtab       "expand tabs with spaces
@@ -135,6 +136,10 @@ tmap <a-left>  <C-W>N:tabNext<CR>
 
 " autocmd BufRead,BufNewFile *.a51 set filetype=masm
 autocmd BufRead,BufNewFile *.a51 set filetype=asm8051
+autocmd BufRead,BufNewFile *.p51 set filetype=plm
+autocmd BufRead,BufNewFile *.P51 set filetype=plm
+autocmd BufRead,BufNewFile *.dcl set filetype=plm
+autocmd BufRead,BufNewFile *.DCL set filetype=plm
 autocmd BufRead,BufNewFile *.fs set filetype=fsharp
 autocmd BufRead,BufNewFile *.fs set syntax=fsharp
 autocmd BufRead,BufNewFile *.kt set filetype=kotlin
@@ -225,9 +230,16 @@ function Rustfmt()
     :redraw!
 endfunction
 
+function Cfmt()
+    :silent exec "!astyle --suffix=none --style=java --pad-oper --add-brackets --add-one-line-brackets '%'"
+    :edit
+    :redraw!
+endfunction
+
 function Cppfmt()
     " :silent exec "!astyle --style=java '%'"
     " :silent exec "!astyle --suffix=none --style=java '%'"
+    " :silent exec "!astyle --suffix=none --style=java --pad-oper --add-brackets --add-one-line-brackets '%'"
     " :silent exec "!astyle --suffix=none --style=ansi '%'"
     " :silent exec "!astyle --suffix=none --style=stroustrup '%'"
     " :edit
@@ -586,12 +598,12 @@ nmap qr ds"
 " note: pwd prints directory path of vim, which can be changed with cd inside vim
 nnoremap _p :echo expand('%:p')<CR>
 
-"
-" Support for Tagbar -- https://github.com/majutsushi/tagbar
-"
-if !exists(':Tagbar') || rust#tags#IsUCtags()
-    finish
-endif
+" "
+" " Support for Tagbar -- https://github.com/majutsushi/tagbar
+" "
+" if !exists(':Tagbar') || rust#tags#IsUCtags()
+"     finish
+" endif
 
 " vint: -ProhibitAbbreviationOption
 let s:save_cpo = &cpo
