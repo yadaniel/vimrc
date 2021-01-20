@@ -37,14 +37,14 @@ Plugin 'https://github.com/kien/ctrlp.vim.git'
 Plugin 'https://github.com/vim-scripts/LustyExplorer.git'
 Plugin 'https://github.com/mileszs/ack.vim.git'
 Plugin 'https://github.com/tomtom/tcomment_vim'
-Plugin 'https://github.com/ericcurtin/CurtineIncSw.vim.git'
+" Plugin 'https://github.com/ericcurtin/CurtineIncSw.vim.git'
 " Plugin 'https://github.com/Valloric/YouCompleteMe'
-Plugin 'https://github.com/ajh17/VimCompletesMe'
+" Plugin 'https://github.com/ajh17/VimCompletesMe'
 
-Plugin 'https://github.com/Shougo/deoplete.nvim'
-Plugin 'https://github.com/roxma/nvim-yarp'
-Plugin 'https://github.com/roxma/vim-hug-neovim-rpc'
-Plugin 'https://github.com/tpope/vim-surround'
+" Plugin 'https://github.com/Shougo/deoplete.nvim'
+" Plugin 'https://github.com/roxma/nvim-yarp'
+" Plugin 'https://github.com/roxma/vim-hug-neovim-rpc'
+" Plugin 'https://github.com/tpope/vim-surround'
 
 " swift plugins
 " Plugin 'https://github.com/toyamarinyon/vim-swift.git'
@@ -533,11 +533,21 @@ nmap  _g :LustyBufferGrep<cr>
 "nmap   :LustyJugglePrevious
 
 nmap _f :CtrlP<cr>
+nmap __f :CtrlPClearAllCaches<cr>
+" let g:ctrlp_regexp = 1
 let g:ctrlp_max_files=0
 let g:ctrlp_max_depth=40
+" let g:ctrlp_max_height=20
+" let g:ctrlp_match_window = 'results:0' " overcome limit imposed by max height
+let g:ctrlp_match_window='min:10,max:50,result:1000'
+" let g:ctrlp_match_window='min:10,max:999'
 " search only in vim current directory
 let g:ctrlp_working_path_mode=''
-
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(exe|so|dll|o|elf)$',
+  \ 'link': 'some_bad_symbolic_links',
+  \ }
 
 " dont jump to the next matching word, stay on the current word
 nnoremap <silent> * :let @/= '\<' . expand('<cword>') . '\>' <bar> set hls <cr>
@@ -651,7 +661,4 @@ fun Count()
 endfun
 command! Count call Count()
 nmap _z :call Count()<CR>
-
-
-
 
