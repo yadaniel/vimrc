@@ -37,14 +37,14 @@ Plugin 'https://github.com/kien/ctrlp.vim.git'
 Plugin 'https://github.com/vim-scripts/LustyExplorer.git'
 Plugin 'https://github.com/mileszs/ack.vim.git'
 Plugin 'https://github.com/tomtom/tcomment_vim'
-Plugin 'https://github.com/ericcurtin/CurtineIncSw.vim.git'
+" Plugin 'https://github.com/ericcurtin/CurtineIncSw.vim.git'
 " Plugin 'https://github.com/Valloric/YouCompleteMe'
-Plugin 'https://github.com/ajh17/VimCompletesMe'
+" Plugin 'https://github.com/ajh17/VimCompletesMe'
 
-Plugin 'https://github.com/Shougo/deoplete.nvim'
-Plugin 'https://github.com/roxma/nvim-yarp'
-Plugin 'https://github.com/roxma/vim-hug-neovim-rpc'
-Plugin 'https://github.com/tpope/vim-surround'
+" Plugin 'https://github.com/Shougo/deoplete.nvim'
+" Plugin 'https://github.com/roxma/nvim-yarp'
+" Plugin 'https://github.com/roxma/vim-hug-neovim-rpc'
+" Plugin 'https://github.com/tpope/vim-surround'
 
 " swift plugins
 " Plugin 'https://github.com/toyamarinyon/vim-swift.git'
@@ -91,6 +91,7 @@ filetype plugin indent on    " required
 " uses tags file
 set omnifunc=syntaxcomplete#Complete
 
+set belloff=all
 set mouse=a
 set ruler
 syntax on
@@ -109,8 +110,8 @@ set encoding=utf8
 set hlsearch
 set incsearch
 " set nomodifiable    "default readonly
-set smartcase
-set ignorecase      "case insensitive search
+" set smartcase       " lowercase pattern will select both, uppercase pattern will select only uppercase
+set ignorecase      "case insensitive search, uppercase will select both
 set cursorline      "cursorline
 set cursorcolumn    " cursorcolumn
 set expandtab       "expand tabs with spaces
@@ -135,6 +136,10 @@ tmap <a-left>  <C-W>N:tabNext<CR>
 
 " autocmd BufRead,BufNewFile *.a51 set filetype=masm
 autocmd BufRead,BufNewFile *.a51 set filetype=asm8051
+autocmd BufRead,BufNewFile *.p51 set filetype=plm
+autocmd BufRead,BufNewFile *.P51 set filetype=plm
+autocmd BufRead,BufNewFile *.dcl set filetype=plm
+autocmd BufRead,BufNewFile *.DCL set filetype=plm
 autocmd BufRead,BufNewFile *.fs set filetype=fsharp
 autocmd BufRead,BufNewFile *.fs set syntax=fsharp
 autocmd BufRead,BufNewFile *.kt set filetype=kotlin
@@ -225,9 +230,16 @@ function Rustfmt()
     :redraw!
 endfunction
 
+function Cfmt()
+    :silent exec "!astyle --suffix=none --style=java --pad-oper --add-brackets --add-one-line-brackets '%'"
+    :edit
+    :redraw!
+endfunction
+
 function Cppfmt()
     " :silent exec "!astyle --style=java '%'"
     " :silent exec "!astyle --suffix=none --style=java '%'"
+    " :silent exec "!astyle --suffix=none --style=java --pad-oper --add-brackets --add-one-line-brackets '%'"
     " :silent exec "!astyle --suffix=none --style=ansi '%'"
     " :silent exec "!astyle --suffix=none --style=stroustrup '%'"
     " :edit
@@ -521,11 +533,21 @@ nmap  _g :LustyBufferGrep<cr>
 "nmap   :LustyJugglePrevious
 
 nmap _f :CtrlP<cr>
+nmap __f :CtrlPClearAllCaches<cr>
+" let g:ctrlp_regexp = 1
 let g:ctrlp_max_files=0
 let g:ctrlp_max_depth=40
+" let g:ctrlp_max_height=20
+" let g:ctrlp_match_window = 'results:0' " overcome limit imposed by max height
+let g:ctrlp_match_window='min:10,max:50,result:1000'
+" let g:ctrlp_match_window='min:10,max:999'
 " search only in vim current directory
 let g:ctrlp_working_path_mode=''
-
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(exe|so|dll|o|elf)$',
+  \ 'link': 'some_bad_symbolic_links',
+  \ }
 
 " dont jump to the next matching word, stay on the current word
 nnoremap <silent> * :let @/= '\<' . expand('<cword>') . '\>' <bar> set hls <cr>
@@ -586,12 +608,12 @@ nmap qr ds"
 " note: pwd prints directory path of vim, which can be changed with cd inside vim
 nnoremap _p :echo expand('%:p')<CR>
 
-"
-" Support for Tagbar -- https://github.com/majutsushi/tagbar
-"
-if !exists(':Tagbar') || rust#tags#IsUCtags()
-    finish
-endif
+" "
+" " Support for Tagbar -- https://github.com/majutsushi/tagbar
+" "
+" if !exists(':Tagbar') || rust#tags#IsUCtags()
+"     finish
+" endif
 
 " vint: -ProhibitAbbreviationOption
 let s:save_cpo = &cpo
@@ -639,7 +661,4 @@ fun Count()
 endfun
 command! Count call Count()
 nmap _z :call Count()<CR>
-
-
-
 
